@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>College Admission Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f3f4f6;
+      }
+      .form-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 2.5rem;
+        background-color: #ffffff;
+        border-radius: 1rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .form-input,
+      .form-select,
+      .form-textarea {
+        border: 1px solid #d1d5db;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s ease-in-out;
+      }
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        outline: none;
+      }
+      .submit-button {
+        background-color: #3b82f6;
+        color: #ffffff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.2s ease-in-out;
+      }
+      .submit-button:hover {
+        background-color: #2563eb;
+      }
+      .message-box {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        background-color: #4caf50;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: none; /* Hidden by default */
+      }
+      .message-box.error {
+        background-color: #f44336;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="message-box" id="messageBox"></div>
+
+    <div class="form-container">
+      <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+        College Admission Application
+      </h1>
+      <p class="text-gray-600 mb-8 text-center">
+        Please fill out the form below to apply for admission.
+      </p>
+
+      <form id="admissionForm" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Personal Information -->
+          <div>
+            <label
+              for="firstName"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >First Name</label
+            >
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              required
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="lastName"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Last Name</label
+            >
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              required
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="phone"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Phone Number</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="dob"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Date of Birth</label
+            >
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              required
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="gender"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Gender</label
+            >
+            <select id="gender" name="gender" class="form-select w-full">
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <hr class="border-gray-200 my-8" />
+
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+          Academic Information
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label
+              for="program"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Program of Interest</label
+            >
+            <select
+              id="program"
+              name="program"
+              required
+              class="form-select w-full"
+            >
+              <option value="">Select Program</option>
+              <option value="computer_science">Computer Science</option>
+              <option value="business_administration">
+                Business Administration
+              </option>
+              <option value="mechanical_engineering">
+                Mechanical Engineering
+              </option>
+              <option value="arts_humanities">Arts & Humanities</option>
+            </select>
+          </div>
+          <div>
+            <label
+              for="gpa"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >High School GPA (out of 4.0)</label
+            >
+            <input
+              type="number"
+              id="gpa"
+              name="gpa"
+              step="0.01"
+              min="0"
+              max="4"
+              class="form-input w-full"
+            />
+          </div>
+          <div class="md:col-span-2">
+            <label
+              for="essay"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Personal Statement (200-500 words)</label
+            >
+            <textarea
+              id="essay"
+              name="essay"
+              rows="6"
+              class="form-textarea w-full"
+            ></textarea>
+          </div>
+        </div>
+
+        <hr class="border-gray-200 my-8" />
+
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+          Address Information
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="md:col-span-2">
+            <label
+              for="addressLine1"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Address Line 1</label
+            >
+            <input
+              type="text"
+              id="addressLine1"
+              name="addressLine1"
+              class="form-input w-full"
+            />
+          </div>
+          <div class="md:col-span-2">
+            <label
+              for="addressLine2"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Address Line 2 (Optional)</label
+            >
+            <input
+              type="text"
+              id="addressLine2"
+              name="addressLine2"
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="city"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >City</label
+            >
+            <input
+              type="text"
+              id="city"
+              name="city"
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="state"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >State/Province</label
+            >
+            <input
+              type="text"
+              id="state"
+              name="state"
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="zipCode"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Zip/Postal Code</label
+            >
+            <input
+              type="text"
+              id="zipCode"
+              name="zipCode"
+              class="form-input w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="country"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Country</label
+            >
+            <input
+              type="text"
+              id="country"
+              name="country"
+              class="form-input w-full"
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center mt-6">
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+            class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+          />
+          <label for="terms" class="ml-2 block text-sm text-gray-900"
+            >I agree to the
+            <a href="#" class="text-blue-600 hover:underline"
+              >terms and conditions</a
+            ></label
+          >
+        </div>
+
+        <div class="mt-8 flex justify-center">
+          <button type="submit" class="submit-button">
+            Submit Application
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("admissionForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          const messageBox = document.getElementById("messageBox");
+          messageBox.style.display = "block"; // Show message box
+
+          // Simulate form submission success
+          messageBox.textContent = "Application submitted successfully! 🎉";
+          messageBox.classList.remove("error"); // Ensure it's not an error style
+
+          // You would typically send this data to a server here
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData.entries());
+          console.log("Form Data Submitted:", data);
+
+          // Clear form after a short delay
+          setTimeout(() => {
+            messageBox.style.display = "none"; // Hide message box
+            this.reset(); // Reset the form fields
+          }, 3000);
+        });
+
+      function showMessage(message, isError = false) {
+        const messageBox = document.getElementById("messageBox");
+        messageBox.textContent = message;
+        if (isError) {
+          messageBox.classList.add("error");
+        } else {
+          messageBox.classList.remove("error");
+        }
+        messageBox.style.display = "block";
+        setTimeout(() => {
+          messageBox.style.display = "none";
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>
